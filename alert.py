@@ -14,7 +14,6 @@ def send_telegram(msg):
     requests.post(url, data={"chat_id": CHAT_ID, "text": msg})
 
 def get_xauusd_prices():
-    # Uses Yahoo Finance — free, no API key needed
     import yfinance as yf
     data = yf.download("GC=F", period="5d", interval=TIMEFRAME, progress=False)
     return data["Close"]
@@ -24,13 +23,12 @@ def check_crossover():
     fast = prices.ewm(span=FAST_EMA, adjust=False).mean()
     slow = prices.ewm(span=SLOW_EMA, adjust=False).mean()
 
-    # Last two candles
-    prev_fast = fast.iloc[-2]
-    prev_slow = slow.iloc[-2]
-    curr_fast = fast.iloc[-1]
-    curr_slow = slow.iloc[-1]
-
-    price = round(float(prices.iloc[-1]), 2)
+    # Extract single float values from last two candles
+    prev_fast = float(fast.iloc[-2].item())
+    prev_slow = float(slow.iloc[-2].item())
+    curr_fast = float(fast.iloc[-1].item())
+    curr_slow = float(slow.iloc[-1].item())
+    price     = round(float(prices.iloc[-1].item()), 2)
 
     if prev_fast <= prev_slow and curr_fast > curr_slow:
         send_telegram(
@@ -53,7 +51,7 @@ def check_crossover():
         print("Bearish crossover detected — alert sent!")
 
     else:
-        print("No crossover detected.")
+        print("No crossover right now. Script working fine!")
 
 if __name__ == "__main__":
     check_crossover()
