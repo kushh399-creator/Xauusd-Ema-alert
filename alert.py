@@ -6,7 +6,7 @@ TELEGRAM_TOKEN = "8358284431:AAHf2KUiOVIpH5fxI8kOXqEYknblGOmjkJo"
 CHAT_ID        = "451489432"
 FAST_EMA       = 9
 SLOW_EMA       = 20
-TIMEFRAME      = "1h"   # change to 15m, 4h etc if you want
+TIMEFRAME      = "5m"   # change to 15m, 4h etc if you want
 # ────────────────────────────────────────────────────────
 
 def send_telegram(msg):
