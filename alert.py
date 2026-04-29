@@ -2,7 +2,7 @@ import requests
 import pandas as pd
 
 # ── CONFIG ──────────────────────────────────────────────
-TELEGRAM_TOKEN = "8358284431:AAHf2KUiOVIpH5fxI8kOXqEYknblGOmjkJo"
+TELEGRAM_TOKEN = "8707758476:AAE2tFYu-VJxZYDwr9n3w2WXffd3WgENtkI"
 CHAT_ID        = "451489432"
 FAST_EMA       = 9
 SLOW_EMA       = 20
